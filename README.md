@@ -1,52 +1,64 @@
-# PF_GALERIA - Arquitectura de Microservicios
+# AG-Studio: Gestión de Galería de Arte con Microservicios
 
-Este repositorio contiene una solución para la gestión de una galería de arte física, basada en una **Arquitectura de Microservicios**. Cada componente está aislado en su propio contenedor y orquestado para funcionar tanto de forma local como en la nube.
+Este proyecto es una plataforma de gestión para una galería de arte, desarrollada bajo una arquitectura de **microservicios**, utilizando **Node.js**, **MongoDB** y desplegada en la nube mediante **Docker** y **Kubernetes (DigitalOcean)**.
 
-<br>
-<br>
+## Arquitectura del Sistema
+
+El sistema se divide en tres microservicios independientes que se comunican a través de una red orquestada:
+
+* **Artistas Service:** Gestión de perfiles y biografía de autores.
+* **Obras Service:** Inventario de piezas de arte y detalles técnicos.
+* **Visitantes Service:** Registro y control de acceso de público.
+
+Cada servicio cuenta con su propia lógica de negocio y se conecta a una instancia centralizada de **MongoDB** dentro del clúster de Kubernetes.
+
 ---
-
-## Requisitos Previos
-
-Antes de comenzar, asegúrate de tener instalado lo siguiente en tu equipo:
-
-* **Node.js** (Versión 16 o superior)
-* **Docker & Docker Desktop**
-* **Git**
-* **Kubectl** (Opcional, solo para despliegue en clúster)
-
 <br>
-<br>
+
+## Tecnologías Utilizadas
+
+* **Backend:** Node.js / Express.js
+* **Base de Datos:** MongoDB (NoSQL)
+* **Contenerización:** Docker & Docker Compose
+* **Orquestación:** Kubernetes (K8s)
+* **Cloud Hosting:** DigitalOcean (Nodes & Load Balancers)
+* **Frontend:** HTML5, CSS, Bootstrap 5
+
 ---
-
-## Despliegue Local (Docker Compose)
-
-La manera más rápida de ver el proyecto funcionando en tu máquina es utilizando **Docker Compose**.
-
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/Myri-ag/pf_sistema_gestor_galeria.git](https://github.com/Myri-ag/pf_sistema_gestor_galeria.git)
-   cd galeria-devops
-
 <br>
 
-2. **Levantar los servicios con Docker:**
-   ```bash
-   docker-compose up --build
+## Despliegue
 
-<br>
+### Requisitos previos
+* Docker instalado.
+* Kubectl configurado con acceso al clúster.
 
-3. **Acceder a los servicios localmente:**
-   
-Una vez que los contenedores estén en ejecución, abre tu navegador en:
+### Ejecución en Local (Desarrollo)
+Para levantar el entorno completo de desarrollo con un solo comando:
+
+```bash
+docker-compose up --build
+````
+La aplicación estará disponible en:
 
 * **Artistas:** http://localhost:3000
 * **Obras:** http://localhost:4000
 * **Visitantes:** http://localhost:5000
 
+### Despliegue en la Nube (Producción)
+Para aplicar la configuración en el clúster de DigitalOcean:
+
+```bash
+kubectl apply -f k8s/mongodb.yaml
+kubectl apply -f k8s/artistas.yaml
+kubectl apply -f k8s/obras.yaml
+kubectl apply -f k8s/visitantes.yaml
+````
+
+--- 
 <br>
 
-4. **Despliegue en la Nube (DigitalOcean):**
+### Despliegue en la Nube (DigitalOcean):
 
 El proyecto se encuentra actualmente desplegado en un clúster de Kubernetes. Puedes visualizarlo en vivo en las siguientes direcciones:
 
@@ -56,3 +68,4 @@ El proyecto se encuentra actualmente desplegado en un clúster de Kubernetes. Pu
 
 <br>
 <br>
+
