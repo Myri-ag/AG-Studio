@@ -51,7 +51,7 @@ docker-compose up --build
 
 <br>
 
-### Despliegue en la Nube (Producción)
+## Despliegue en la Nube (Producción)
 Para aplicar la configuración en el clúster de DigitalOcean:
 
 ```bash
@@ -64,7 +64,7 @@ kubectl apply -f k8s/visitantes.yaml
 --- 
 <br>
 
-### Despliegue en la Nube (DigitalOcean):
+## Despliegue en la Nube (DigitalOcean):
 
 El proyecto se encuentra actualmente desplegado en un clúster de Kubernetes. Puedes visualizarlo en vivo en las siguientes direcciones:
 
